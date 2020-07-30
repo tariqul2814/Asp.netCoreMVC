@@ -1,0 +1,39 @@
+﻿@using ReflectionIT.Mvc.Paging
+@model PagingList<UdemyTutorial.Model.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<nav aria-label="Products navigation example">
+    <vc:pager paging-list="@Model"></vc:pager>
+    <a href="@Url.Action("CreateCourse","Course")">Create Course</a>
+</nav>
+<table class="table-danger">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Credits</th>
+            <th>Department</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var values in Model)
+        {
+            <tr>
+                <td>@values.CourseName</td>
+                <td>@values.Credits</td>
+                <td>@values.Department.DepartmentName</td>
+                <td>@Html.ActionLink("Update", "UpdateCourse", "Course", new { Id = values.CourseId })</td>
+                <td>@Html.ActionLink("Delete", "DeleteCourse", "Course", new { CourseId = values.CourseId })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Products navigation example">
+    <vc:pager paging-list="@Model" />
+</nav>

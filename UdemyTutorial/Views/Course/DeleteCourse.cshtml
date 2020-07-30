@@ -1,0 +1,32 @@
+﻿@model UdemyTutorial.Model.Course
+@{
+    ViewData["Title"] = "DeleteCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Course</h1>
+
+<form asp-controller="Course" asp-action="CreateCourse" method="post">
+    <div class="row">
+        <div class="col-md-4 col-xl-4 col-sm-4">
+            <div class="form-group">
+                <label asp-for="CourseName" class="custom-control-label"></label>
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Credits" class="custom-control-label"></label>
+                <input asp-for="Credits" class="form-control" />
+                <span asp-validation-for="Credits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="custom-control-label"></label>
+                <select asp-for="DepartmentId" asp-items="ViewBag.DepartmentId" class="form-control"></select>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
